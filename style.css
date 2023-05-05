@@ -1,34 +1,67 @@
+body {
+  background-color: rgb(0, 0, 30); /* Default background color */
+  font-family: 'Fjalla One', sans-serif;
+}
+
 h1 {
   width: 100%;
   display: flex;
   justify-content: center;
   text-align: center;
+  color: white;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1rem;
+
 }
 
 .sun {
-  width: 82%;
-  margin: auto;
-  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  color: white;
+}
+
+#current-time {
+  font-size: 2rem;
+  padding: .75rem;
+  margin: 1rem;
+  color: white;
+  border-radius: 1rem;
+}
+
+body {
+  background-image: url("images/sunset.jpeg");
+  background-size: cover;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-content: flex-start;
   width: 80%;
   margin: auto;
   height: 400px;
   border-style: solid;
+  border-color: white;
   padding: 1%;
+  color: white;
 }
 
 .stat_box {
-  flex-basis: calc(25% - 10px);
-  height: 100px;
-  margin-bottom: 20px;
+  width: 200px;
+  height: 75px;
+  margin: 10px;
+  padding: 1rem;
   border-style: solid;
+  border-color: black;
   text-align: center;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 1rem;
 }
