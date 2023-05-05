@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Mike Delasalle - Chase the Sun</title>
-    <script src="script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,12 +17,31 @@
       <div><span id="current-time"></span></div>
       <div>Sunset: 21:36</div>
     </div>
+
+    <div id="biker-container">
+      <div id="start-line"></div>
+      <div id="biker"></div>
+      <div id="finish-line"></div>
+    </div>
+
+
     <div class="container">
       <div class="stat_box">Distance
         <h2>205 Miles</h2>
       </div>
-      <div class="stat_box">Start time</div>
-      <div class="stat_box">Time Until Sunset</div>
+      <div class="stat_box">Start time
+        <div>
+          <input type="text" id="input-box" placeholder="00:00:00">
+          <button id="enter-button" onclick="handleClick()">></button>
+        </div>
+        <div>
+          <h2 id="display-text" style="display: none;"></h2>
+        </div>
+
+      </div>
+      <div class="stat_box"> Time until sunset
+        <h2 id="time-diff"></h2>
+      </div>
       <div class="stat_box">Current ETA</div>
       <div class="stat_box">Target ETA</div>
       <div class="stat_box">Average speed</div>
@@ -31,5 +49,7 @@
       <div class="stat_box">Extra break time allowed</div>
       <div class="stat_box">Time Amassed</div>
     </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
