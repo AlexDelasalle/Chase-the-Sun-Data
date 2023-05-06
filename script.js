@@ -26,7 +26,7 @@ function updateTimeDiff() {
   const now = new Date();
 
   // Define the sunset time (replace with your own variable)
-  const sunsetTime = new Date("2023-05-05T21:23:00");
+  const sunsetTime = new Date("2023-06-24T21:23:00");
 
   // Calculate the difference between the current time and sunset time in milliseconds
   const diffInMillis = sunsetTime - now;
