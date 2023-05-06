@@ -26,7 +26,7 @@ function updateTimeDiff() {
   const now = new Date();
 
   // Define the sunset time (replace with your own variable)
-  const sunsetTime = new Date("2023-05-05T20:00:00");
+  const sunsetTime = new Date("2023-05-05T21:23:00");
 
   // Calculate the difference between the current time and sunset time in milliseconds
   const diffInMillis = sunsetTime - now;
@@ -60,9 +60,9 @@ function setBikerPosition() {
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const sunrise = new Date();
-  sunrise.setHours(4, 45, 0); // set sunrise time to 4:45 AM
+  sunrise.setHours(04, 45, 00); // set sunrise time to 4:45 AM
   const sunset = new Date();
-  sunset.setHours(21, 23, 0); // set sunset time to 9:23 PM
+  sunset.setHours(21, 23, 00); // set sunset time to 9:23 PM
 
   if (date < sunrise || date > sunset) {
     // hide the biker outside sunrise and sunset hours
@@ -70,8 +70,8 @@ function setBikerPosition() {
   } else {
     // show the biker during sunrise and sunset hours
     biker.style.display = 'block';
-    const totalMinutes = (hours - 4) * 60 + minutes; // calculate the total minutes elapsed since 4:00 AM
-    const position = (totalMinutes / (15 * 60 + 38)) * 100; // calculate the position of the biker based on the elapsed time
+    const totalMinutes = (hours - 4) * 60 + (minutes - 45) ; // calculate the total minutes elapsed since 4:00 AM
+    const position = (totalMinutes / (15 * 60 + 38)) * 95; // calculate the position of the biker based on the elapsed time
     biker.style.left = `${position}%`;
   }
 }

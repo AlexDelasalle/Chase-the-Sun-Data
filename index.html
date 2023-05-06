@@ -11,43 +11,43 @@
   </head>
 
   <body>
-    <h1>Workout</h1>
-    <div class="sun">
-      <div>Sunrise: 04:45</div>
-      <div><span id="current-time"></span></div>
-      <div>Sunset: 21:36</div>
+    <div id="title-image">
+      <img src="images/chase-the-sun-header.png" alt="title" width = "40%">
     </div>
-
-    <div id="biker-container">
-      <div id="start-line"></div>
-      <div id="biker"></div>
-      <div id="finish-line"></div>
-    </div>
-
 
     <div class="container">
-      <div class="stat_box">Distance
-        <h2>205 Miles</h2>
-      </div>
-      <div class="stat_box">Start time
-        <div>
-          <input type="text" id="input-box" placeholder="00:00:00">
-          <button id="enter-button" onclick="handleClick()">></button>
+      <div class="data-container">
+        <div class="stat_box">Distance
+          <h2>205 Miles</h2>
         </div>
-        <div>
+        <div class="stat_box">Start time
+          <input type="text" id="input-box" placeholder="00:00:00">
+          <button id="enter-button" onclick="handleClick()">GO</button>
           <h2 id="display-text" style="display: none;"></h2>
         </div>
+        <div class="stat_box"> Time until sunset
+          <h2 id="time-diff"></h2>
+        </div>
+        <div class="stat_box">Current ETA</div>
+        <div class="stat_box">Target ETA</div>
+        <div class="stat_box">Average speed</div>
+        <div class="stat_box">Break time</div>
+        <div class="stat_box">Extra break time allowed</div>
+        <div class="stat_box">Time Amassed</div>
+      </div>
 
+      <div class="charts-container">
+        <div class="sun-chart-container">
+          <div style="position: absolute; top: 90%; left: 1%;">Sunrise: 04:45</div>
+          <div style="position: absolute; top: 40%;"><span id="current-time"></span></div>
+          <div style="position: absolute; top: 90%; right: 1%;">Sunset: 21:23</div>
+        </div>
+        <div id="biker-container">
+          <div id="start-line"></div>
+          <div id="biker"></div>
+          <div id="finish-line"></div>
+        </div>
       </div>
-      <div class="stat_box"> Time until sunset
-        <h2 id="time-diff"></h2>
-      </div>
-      <div class="stat_box">Current ETA</div>
-      <div class="stat_box">Target ETA</div>
-      <div class="stat_box">Average speed</div>
-      <div class="stat_box">Break time</div>
-      <div class="stat_box">Extra break time allowed</div>
-      <div class="stat_box">Time Amassed</div>
     </div>
 
     <script src="script.js"></script>
