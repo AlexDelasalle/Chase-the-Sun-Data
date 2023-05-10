@@ -68,8 +68,7 @@ h2 {
   margin: 20px;
   display: flex;
   justify-content: center;
-  background-image: url("images/earth.jpeg");
-  background-size: cover;
+  background-color: #87CEEB;
 }
 
 #biker-container {
