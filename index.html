@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
@@ -17,23 +23,56 @@
 
     <div class="container">
       <div class="data-container">
-        <div class="stat_box">Distance
-          <h2>205 Miles</h2>
-        </div>
-        <div class="stat_box">Start time
+
+        <div class="stat_box">START TIME
           <input type="text" id="input-box" placeholder="00:00:00">
-          <button id="enter-button" onclick="handleClick()">GO</button>
+          <button id="enter-button" onclick="handleClick()">Enter</button>
           <h2 id="display-text" style="display: none;"></h2>
         </div>
-        <div class="stat_box"> Time until sunset
+
+        <div class="stat_box">AVERAGE SPEED
+          <h2>API</h2>
+        </div>
+
+        <div class="stat_box">DISTANCE COVERED
+          <h2>API</h2>
+        </div>
+
+        <div class="stat_box">DISTANCE REMAINING
+          <h2>205 - Distance covered</h2>
+        </div>
+
+        <div class="stat_box">CURRENT ETA
+          <h2>Current Time  + time to finish</h2>
+        </div>
+        <div class="stat_box">TARGET ETA
+          <p id="target_eta" data-type="time">20:53:00</p>
+        </div>
+        <div class="stat_box">TOTAL BREAK TIME
+          <input type="number" id="inputNumber" class="no-spin" />
+          <button onclick="addNumber()">Add</button>
+          <p id="result">0 Minutes</p>
+        </div>
+
+        <div class="stat_box">EXTRA BREAK TIME ALLOWED
+          <h2>Target ETA - Current ETA</h2>
+        </div>
+        <div class="stat_box">TIME AMASSED
+          <h2>API + total break time</h2>
+        </div>
+
+        <div class="stat_box">TIME TO FINISH (at current pace)
+          <h2>Distance remaining/speed + remaining break time</h2>
+        </div>
+
+        <div class="stat_box"> TIME UNTIL SUNSET
           <h2 id="time-diff"></h2>
         </div>
-        <div class="stat_box">Current ETA</div>
-        <div class="stat_box">Target ETA</div>
-        <div class="stat_box">Average speed</div>
-        <div class="stat_box">Break time</div>
-        <div class="stat_box">Extra break time allowed</div>
-        <div class="stat_box">Time Amassed</div>
+
+        <div class="stat_box">RACE DISTANCE
+          <h2>205 Miles</h2>
+        </div>
+
       </div>
 
       <div class="charts-container">

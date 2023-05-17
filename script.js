@@ -79,3 +79,21 @@ function setBikerPosition() {
 setBikerPosition(); // call the function once at the beginning to set the initial position of the biker
 
 setInterval(setBikerPosition, 60000); // update the position of the biker every minute
+
+//--------UPDATING BREAK TIME----------
+let sum = 0;
+
+function addNumber() {
+  // Get the input value
+  const input = document.getElementById('inputNumber').value;
+
+  // Convert the input value to a number
+  const number = parseInt(input);
+
+  // Add the number to the sum
+  sum += number;
+
+  // Update the result element with the new sum
+  const resultElement = document.getElementById('result');
+  resultElement.textContent = 'Sum: ' + sum;
+}
