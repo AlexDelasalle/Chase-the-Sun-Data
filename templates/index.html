@@ -35,7 +35,7 @@
         </div>
 
         <div class="stat_box">AVERAGE SPEED
-          <h2>API</h2>
+          <h2>{{ speed }}</h2>
         </div>
 
         <div class="stat_box">DISTANCE COVERED
@@ -92,6 +92,8 @@
         </div>
       </div>
     </div>
+
+    <p>{{ workouts }}</p>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>

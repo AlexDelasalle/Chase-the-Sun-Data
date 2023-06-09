@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect
-
 import requests
 
 app = Flask(__name__)
@@ -62,21 +61,27 @@ def callback():
         refresh_token = refreshed_token_data["refresh_token"]
 
         # Step 5: Use the access_token to make authorized requests to the Wahoo API
-        api_url = f"https://{base_url}/api/endpoint"
+        base_url = "api.wahooligan.com"
+        workouts_endpoint = "/v1/workouts"
+        per_page = 30  # Number of workouts to retrieve per page
+
+        # Construct the API URL with the necessary parameters
+        api_url = f"https://{base_url}{workouts_endpoint}?per_page={per_page}"
+
+        # Set the headers with the access token
         headers = {
             "Authorization": f"Bearer {access_token}",
             "Content-Type": "application/json"
         }
 
-        # Make a request to the API using the access_token
+        # Make a GET request to the API endpoint to retrieve the workouts
         response = requests.get(api_url, headers=headers)
-        api_data = response.json()
+        workout_data = response.json()
 
-        # Handle the API response data as needed
+        # Extract the workouts from the response data
+        workouts = workout_data["workouts"]
 
-        return 'Authorization process completed.'
-    else:
-        return 'Failed to obtain access token'
+        return render_template('index.html', workouts=workouts)
 
 if __name__ == '__main__':
     app.run(debug=True)
