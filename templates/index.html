@@ -13,12 +13,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
   </head>
 
   <body>
     <div id="title-image">
-      <img src="images/chase-the-sun-header.png" alt="title" width = "40%">
+      <img src="{{ url_for('static', filename='img/chase-the-sun-header.png') }}" alt="title" width="40%">
     </div>
 
     <form action="/authorize" method="POST">
@@ -93,6 +93,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>
