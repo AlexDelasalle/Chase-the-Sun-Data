@@ -1,7 +1,14 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   background-image: url("/img/sunset.jpeg");
   background-size: cover;
   font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 #title-image {
@@ -10,6 +17,12 @@ body {
   margin: 2rem;
 }
 
+footer {
+  text-align: center;
+  color: white;
+  margin-top: auto;
+  padding: 10px;
+}
 input {
   height: 40%;
   width: 80%;
@@ -38,12 +51,19 @@ h2 {
   color: green;
 }
 
+#sunrise, #sunset {
+  font-size: 20px;
+}
+
+
 #current-time {
   font-size: 2rem;
   padding: .75rem;
   margin: 1rem;
   color: black;
   border-radius: 1rem;
+  font-weight: bold;
+  background-color: white;
 }
 
 .container {
@@ -53,8 +73,6 @@ h2 {
   margin: 0 auto;
   margin-top: 10px;
   height: 30%;
-  border-style: solid;
-  border-color: white;
   color: white;
 }
 
@@ -87,6 +105,7 @@ h2 {
   height: 200px;
   border-style: solid;
   border-color: white;
+  border-radius: 20px;
   margin: 20px;
   display: flex;
   justify-content: center;
@@ -101,6 +120,7 @@ h2 {
   margin: 20px;
   border-style: solid;
   border-color: white;
+  border-radius: 20px;
   background-image: url("/img/road.png");
   background-size: contain;
 }
@@ -175,12 +195,25 @@ label {
   position: absolute;
   top: 77%;
   transform: translateY(-60%);
-  width: 72px;
-  height: 50px;
+  width: 65px;
+  height: 40px;
   background-image: url('/img/biker.png');
   background-size: cover;
   transition: left 1s linear;
+  opacity: .5;
 }
+
+#biker2 {
+  position: absolute;
+  top: 75%;
+  transform: translate(-50%, -50%);
+  width: 65px;
+  height: 40px;
+  background-image: url('/img/biker.png');
+  background-size: cover;
+}
+
+
 
 #finish-line {
   position: absolute;
@@ -206,3 +239,37 @@ label {
   border-radius: 4px;
   padding: 6px 10px;
 }
+
+/* Responsive CSS */
+
+@media only screen and (max-width: 800px) {
+  /* Adjust container and data-container */
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .data-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .charts-container {
+    width: 100%;
+  }
+
+  /* Adjust stat_box */
+  .stat_box {
+    width: 25%;
+    height: 25%;
+    margin: 10px 0;
+  }
+
+  /* Adjust sun-chart-container and biker-container */
+  .sun-chart-container,
+  #biker-container {
+    width: 100%;
+  }
+}
+
+/* End of Responsive CSS */

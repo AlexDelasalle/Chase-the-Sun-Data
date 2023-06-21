@@ -240,7 +240,7 @@ function setBikerPosition() {
   const sunrise = new Date();
   sunrise.setHours(0o4, 45, 0o0); // set sunrise time to 4:45 AM
   const sunset = new Date();
-  sunset.setHours(21, 23, 0o0); // set sunset time to 9:23 PM
+  sunset.setHours(21, 33, 0o0); // set sunset time to 9:23 PM
 
   if (date < sunrise || date > sunset) {
     // hide the biker outside sunrise and sunset hours
@@ -258,20 +258,18 @@ setBikerPosition(); // call the function once at the beginning to set the initia
 
 setInterval(setBikerPosition, 60000); // update the position of the biker every minute
 
-//--------UPDATING BREAK TIME----------
-let sum = 0;
+//---------Second man on bike----------
+const biker2 = document.getElementById('biker2');
 
-function addNumber() {
-  // Get the input value
-  const input = document.getElementById('inputNumber').value;
-
-  // Convert the input value to a number
-  const number = parseInt(input);
-
-  // Add the number to the sum
-  sum += number;
-
-  // Update the result element with the new sum
-  const resultElement = document.getElementById('result');
-  resultElement.textContent = 'Sum: ' + sum;
+function updateBiker2Position() {
+  const distanceInput2 = document.getElementById("distanceInput").value;
+  const bikerContainer = document.getElementById("biker-container");
+  const containerWidth = bikerContainer.offsetWidth;
+  const maxDistance = 205;
+  const position = (distanceInput2 / maxDistance) * containerWidth;
+  biker2.style.left = `${position}px`;
 }
+
+// Add an event listener to the distance input field
+const distanceInput2 = document.getElementById("distanceInput");
+distanceInput2.addEventListener("input", updateBiker2Position);
