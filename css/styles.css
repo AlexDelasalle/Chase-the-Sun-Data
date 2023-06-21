@@ -1,5 +1,5 @@
 body {
-  background-image: url("/static/img/sunset.jpeg");
+  background-image: url("/img/sunset.jpeg");
   background-size: cover;
   font-family: 'Open Sans', sans-serif;
 }
@@ -101,7 +101,7 @@ h2 {
   margin: 20px;
   border-style: solid;
   border-color: white;
-  background-image: url("/static/img/road.png");
+  background-image: url("/img/road.png");
   background-size: contain;
 }
 
@@ -167,7 +167,7 @@ label {
   transform: translateY(-60%);
   width: 80px;
   height: 80px;
-  background-image: url('/static/img/start.jpeg');
+  background-image: url('/img/start.jpeg');
   background-size: cover;
 }
 
@@ -177,7 +177,7 @@ label {
   transform: translateY(-60%);
   width: 72px;
   height: 50px;
-  background-image: url('/static/img/biker.png');
+  background-image: url('/img/biker.png');
   background-size: cover;
   transition: left 1s linear;
 }
@@ -189,7 +189,7 @@ label {
   transform: translateY(-60%);
   width: 80px;
   height: 80px;
-  background-image: url('/static/img/finish.png');
+  background-image: url('/img/finish.png');
   background-size: cover;
 }
 
