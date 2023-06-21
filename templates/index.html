@@ -13,67 +13,71 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
   </head>
 
   <body>
     <div id="title-image">
-      <img src="{{ url_for('static', filename='img/chase-the-sun-header.png') }}" alt="title" width="40%">
+      <img src="/static/img/chase-the-sun-header.png" alt="title" width="40%">
     </div>
-
-    <form action="/authorize" method="POST">
-      <button type="submit">Authorize</button>
-    </form>
 
     <div class="container">
       <div class="data-container">
 
-        <div class="stat_box">START TIME
-          <input type="text" id="input-box" placeholder="00:00:00">
-          <button id="enter-button" onclick="handleClick()">Enter</button>
-          <h2 id="display-text" style="display: none;"></h2>
+        <div class="stat_box">
+          <h1>START TIME</h1>
+          <input type="time" id="startTimeInput">
         </div>
 
-        <div class="stat_box">AVERAGE SPEED
-          <h2>{{ speed }}</h2>
+        <div class="stat_box">
+          <h1>SPEED</h1>
+          <input id="speedInput">
         </div>
 
-        <div class="stat_box">DISTANCE COVERED
-          <h2>API</h2>
+        <div class="stat_box"><h1>DISTANCE</h1>
+          <input id="distanceInput">
         </div>
 
-        <div class="stat_box">DISTANCE REMAINING
-          <h2>205 - Distance covered</h2>
+        <div class="stat_box">
+          <h1>DISTANCE REMAINING</h1>
+          <h2 id="remainingDistanceDisplay"></h2>
         </div>
 
-        <div class="stat_box">CURRENT ETA
-          <h2>Current Time  + time to finish</h2>
-        </div>
-        <div class="stat_box">TARGET ETA
-          <p id="target_eta" data-type="time">20:53:00</p>
-        </div>
-        <div class="stat_box">TOTAL BREAK TIME
-          <input type="number" id="inputNumber" class="no-spin" />
-          <button onclick="addNumber()">Add</button>
-          <p id="result">0 Minutes</p>
+        <div class="stat_box">
+          <h1>REMAINING BREAK TIMES</h1>
+          <input id="breakTimeInput">
         </div>
 
-        <div class="stat_box">EXTRA BREAK TIME ALLOWED
-          <h2>Target ETA - Current ETA</h2>
-        </div>
-        <div class="stat_box">TIME AMASSED
-          <h2>API + total break time</h2>
+        <div class="stat_box">
+          <h1>TIME AMASSED</h1>
+          <h2 id="timeAmassedDisplay"></h2>
         </div>
 
-        <div class="stat_box">TIME TO FINISH (at current pace)
-          <h2>Distance remaining/speed + remaining break time</h2>
+        <div class="stat_box">
+          <h1>TIME TO FINISH (at current pace)</h1>
+          <h2 id="timeToFinishDisplay"></h2>
         </div>
 
-        <div class="stat_box"> TIME UNTIL SUNSET
-          <h2 id="time-diff"></h2>
+        <div class="stat_box">
+          <h1>CURRENT ETA</h1>
+          <h2 id="finishTimeDisplay" data-type="time"></h2>
         </div>
 
-        <div class="stat_box">RACE DISTANCE
+
+        <div class="stat_box">
+          <h1>TARGET ETA</h1>
+          <h2 id="target_eta" data-type="time">21:00</h2>
+        </div>
+
+
+        <div class="stat_box">
+          <h1>Extra break time allowed</h1>
+          <h2 id="extraBreakTimeDisplay"></h2>
+        </div>
+
+
+        <div class="stat_box">
+          <h1>RACE DISTANCE</h1>
           <h2>205 Miles</h2>
         </div>
 
@@ -81,9 +85,9 @@
 
       <div class="charts-container">
         <div class="sun-chart-container">
-          <div style="position: absolute; top: 90%; left: 1%;">Sunrise: 04:45</div>
+          <div style="position: absolute; top: 90%; left: 1%;" id="sunrise"></div>
           <div style="position: absolute; top: 40%;"><span id="current-time"></span></div>
-          <div style="position: absolute; top: 90%; right: 1%;">Sunset: 21:23</div>
+          <div style="position: absolute; top: 90%; right: 1%;" id="sunset"></div>
         </div>
         <div id="biker-container">
           <div id="start-line"></div>
@@ -93,8 +97,6 @@
       </div>
     </div>
 
-    <p>{{ workouts }}</p>
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="/static/js/script.js"></script>
   </body>
 </html>
