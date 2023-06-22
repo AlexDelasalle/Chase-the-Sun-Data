@@ -2,7 +2,6 @@ let speed;
 let distance;
 let startTime;
 let breakTime;
-let targetETA;
 
 
 function storeSpeed() {
@@ -140,14 +139,20 @@ function calculateTimeDifference() {
   // Calculate the time difference in minutes
   const timeDifferenceInMinutes = targetETAInMinutes - currentETAInMinutes;
 
+  // Handle negative time difference
+  const adjustedTimeDifferenceInMinutes = Math.max(timeDifferenceInMinutes, 0);
+
   // Convert the time difference to hours and minutes
-  const timeDifferenceHours = Math.floor(timeDifferenceInMinutes / 60);
-  const timeDifferenceMinutes = timeDifferenceInMinutes % 60;
+  const timeDifferenceHours = Math.floor(adjustedTimeDifferenceInMinutes / 60);
+  const timeDifferenceMinutes = adjustedTimeDifferenceInMinutes % 60;
 
   // Update the content of the extraBreakTimeDisplay h2 element with the time difference
   const extraBreakTimeDisplay = document.getElementById("extraBreakTimeDisplay");
   extraBreakTimeDisplay.textContent = timeDifferenceHours + "h " + timeDifferenceMinutes + "m";
 }
+
+
+
 
 // ------------ Calculating time amassed --------------------
 
@@ -173,6 +178,52 @@ function calculateTimeAmassed() {
 // Add an event listener to the startTimeInput field
 var startTimeInput = document.getElementById("startTimeInput");
 startTimeInput.addEventListener("input", calculateTimeAmassed);
+
+// Changing relevant text colors if not on track
+
+function changeTextColor() {
+  const finishTimeDisplay = document.getElementById("finishTimeDisplay");
+  const targetETA = document.getElementById("target_eta");
+
+  const finishTime = finishTimeDisplay.textContent;
+  const targetETAText = targetETA.textContent;
+
+  // Validate finish time and target ETA format
+  const finishTimeMatch = finishTime.match(/^(\d{1,2}):(\d{2})$/);
+  const targetETAMatch = targetETAText.match(/^(\d{1,2}):(\d{2})$/);
+
+  if (!finishTimeMatch || !targetETAMatch) {
+    return; // Invalid format, do not change the text color
+  }
+
+  // Extract hours and minutes from finish time and target ETA
+  const finishHours = parseInt(finishTimeMatch[1]);
+  const finishMinutes = parseInt(finishTimeMatch[2]);
+  const targetHours = parseInt(targetETAMatch[1]);
+  const targetMinutes = parseInt(targetETAMatch[2]);
+
+  // Convert finish time and target ETA to minutes
+  const finishTimeInMinutes = finishHours * 60 + finishMinutes;
+  const targetETAInMinutes = targetHours * 60 + targetMinutes;
+
+  // Compare finish time and target ETA
+  if (finishTimeInMinutes > targetETAInMinutes) {
+    // Finish time is later than target ETA, change text color to red and apply flashing class
+    finishTimeDisplay.style.color = "red";
+    finishTimeDisplay.classList.add("flashing-red");
+    extraBreakTimeDisplay.style.color = "red";
+    extraBreakTimeDisplay.classList.add("flashing-red");
+  } else {
+    // Finish time is earlier or equal to target ETA, reset text color and remove flashing class
+    finishTimeDisplay.style.color = "";
+    finishTimeDisplay.classList.remove("flashing-red");
+    extraBreakTimeDisplay.style.color = "";
+    extraBreakTimeDisplay.classList.remove("flashing-red");
+  }
+}
+
+// Call the changeTextColor function periodically every second
+setInterval(changeTextColor, 1000);
 
 
 // -------------Sunrise-Sunset API-------------------------
@@ -238,9 +289,9 @@ function setBikerPosition() {
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const sunrise = new Date();
-  sunrise.setHours(0o4, 45, 0o0); // set sunrise time to 4:45 AM
+  sunrise.setHours(0o4, 37, 0o0); // set sunrise time to 4:45 AM
   const sunset = new Date();
-  sunset.setHours(21, 33, 0o0); // set sunset time to 9:23 PM
+  sunset.setHours(21, 34, 0o0); // set sunset time to 9:23 PM
 
   if (date < sunrise || date > sunset) {
     // hide the biker outside sunrise and sunset hours
@@ -257,6 +308,9 @@ function setBikerPosition() {
 setBikerPosition(); // call the function once at the beginning to set the initial position of the biker
 
 setInterval(setBikerPosition, 60000); // update the position of the biker every minute
+
+
+
 
 //---------Second man on bike----------
 const biker2 = document.getElementById('biker2');
