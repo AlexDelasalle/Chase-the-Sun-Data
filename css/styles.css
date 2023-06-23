@@ -303,4 +303,41 @@ label {
   }
 }
 
+@media only screen and (max-width: 480px) {
+  /* Adjust container and data-container */
+  body {
+    background-color: #F4BB44;
+    background-image: none;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .data-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .charts-container {
+    width: 100%;
+  }
+
+  /* Adjust stat_box */
+  .stat_box {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+
+  /* Adjust sun-chart-container and biker-container */
+  .sun-chart-container,
+  #biker-container {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+  }
+}
+
 /* End of Responsive CSS */
