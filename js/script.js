@@ -277,41 +277,6 @@ function parseTimeString(timeString, use24HourFormat) {
   }
 }
 
-//  ------------FINDING THE TIME UNTIL SUNSET--------------
-
-
-
-//----------MAN ON BIKE-----------
-const biker = document.getElementById('biker');
-
-function setBikerPosition() {
-  const date = new Date();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const sunrise = new Date();
-  sunrise.setHours(0o4, 37, 0o0); // set sunrise time to 4:45 AM
-  const sunset = new Date();
-  sunset.setHours(21, 34, 0o0); // set sunset time to 9:23 PM
-
-  if (date < sunrise || date > sunset) {
-    // hide the biker outside sunrise and sunset hours
-    biker.style.display = 'none';
-  } else {
-    // show the biker during sunrise and sunset hours
-    biker.style.display = 'block';
-    const totalMinutes = (hours - 4) * 60 + (minutes - 45) ; // calculate the total minutes elapsed since 4:00 AM
-    const position = (totalMinutes / (15 * 60 + 38)) * 95; // calculate the position of the biker based on the elapsed time
-    biker.style.left = `${position}%`;
-  }
-}
-
-setBikerPosition(); // call the function once at the beginning to set the initial position of the biker
-
-setInterval(setBikerPosition, 60000); // update the position of the biker every minute
-
-
-
-
 //---------Second man on bike----------
 const biker2 = document.getElementById('biker2');
 
@@ -327,3 +292,72 @@ function updateBiker2Position() {
 // Add an event listener to the distance input field
 const distanceInput2 = document.getElementById("distanceInput");
 distanceInput2.addEventListener("input", updateBiker2Position);
+
+//----------MAN ON BIKE-----------
+// const biker = document.getElementById('biker');
+
+// function setBikerPosition() {
+//   const date = new Date();
+//   const hours = date.getHours();
+//   const minutes = date.getMinutes();
+//   const sunrise = new Date();
+//   sunrise.setHours(4, 37, 0); // set sunrise time to 4:37 AM
+//   const sunset = new Date();
+//   sunset.setHours(21, 15, 0); // set sunset time to 9:36 PM
+
+//   if (date < sunrise || date > sunset) {
+//     // hide the biker outside sunrise and sunset hours
+//     biker.style.display = 'none';
+//   } else {
+//     // show the biker during sunrise and sunset hours
+//     biker.style.display = 'block';
+//     const totalMinutes = (hours - 4) * 60 + (minutes - 37); // calculate the total minutes elapsed since 4:37 AM
+//     const position = (totalMinutes / ((21 - 4) * 60 + 36 - 37)) * 100; // calculate the position of the biker based on the elapsed time
+//     biker.style.left = `${position}%`;
+//   }
+// }
+
+// setBikerPosition(); // call the function once at the beginning to set the initial position of the biker
+
+// setInterval(setBikerPosition, 60000);
+
+
+// Define the start and end times in hours and minutes
+const startHour = 4;
+const startMinute = 37;
+const endHour = 21;
+const endMinute = 36;
+
+// Calculate the total minutes from the start time to the end time
+const startTimeMinutes = startHour * 60 + startMinute;
+const endTimeMinutes = endHour * 60 + endMinute;
+const totalTimeMinutes = endTimeMinutes - startTimeMinutes;
+
+// Get the biker and biker-container elements
+const biker = document.getElementById('biker');
+const bikerContainer = document.getElementById('biker-container');
+
+// Calculate the container width
+const containerWidth = bikerContainer.offsetWidth;
+
+// Calculate the distance to move the biker for each minute
+const distancePerMinute = containerWidth / totalTimeMinutes;
+
+// Update the biker position based on the current time
+function updateBikerPosition() {
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+
+  // Calculate the elapsed time in minutes from the start time
+  const elapsedMinutes = (currentHour - startHour) * 60 + (currentMinute - startMinute);
+
+  // Calculate the new position for the biker
+  const newPosition = distancePerMinute * elapsedMinutes;
+
+  // Set the left position of the biker element
+  biker.style.left = newPosition + 'px';
+}
+
+// Call the updateBikerPosition function every second
+setInterval(updateBikerPosition, 1000);
