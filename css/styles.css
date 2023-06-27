@@ -303,11 +303,27 @@ label {
   }
 }
 
+@media only screen and (max-width: 767px) {
+  .charts-container, #biker-container {
+    display: none;
+  }
+
+  .stat_box {
+    width: 80%;
+  }
+
+  .footer {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   /* Adjust container and data-container */
   body {
     background-color: #F4BB44;
     background-image: none;
+    position: relative;
+    min-height: 100vh;
   }
 
   .container {
@@ -326,9 +342,13 @@ label {
 
   /* Adjust stat_box */
   .stat_box {
-    width: 100%;
-    height: auto;
+    width: 40%;
+    height: 20%;
     margin: 10px 0;
+  }
+
+  footer {
+    display: none;
   }
 
   /* Adjust sun-chart-container and biker-container */
